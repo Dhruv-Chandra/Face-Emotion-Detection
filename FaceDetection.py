@@ -42,7 +42,7 @@ def ret_latest_file(x):
         return 0
 
 def get_prediction(image):
-    name = f'{default}{int(ret_latest_file(default))}'
+    name = f'{default}{int(ret_latest_file(default) + 1)}'
     image = np.expand_dims(image, axis = 0)
     # print(image.shape)
     
