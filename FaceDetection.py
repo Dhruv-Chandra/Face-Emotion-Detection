@@ -42,12 +42,12 @@ def ret_latest_file(x):
         return 0
 
 def get_prediction(image):
-    name = f'{base_loc}Models/{default}{ret_latest_file(default)}/{default}{ret_latest_file(default)}.json'
-    # print(name)
+    name = f'{default}{int(ret_latest_file(default))}'
     image = np.expand_dims(image, axis = 0)
     # print(image.shape)
-    model = model_from_json(open(name, "r").read())
-    model.load_weights(f'{name[:-5]}.h5')
+    
+    model = model_from_json(open(f'{base_loc}Models/{name}/{name}.json', "r").read())
+    model.load_weights(f'{base_loc}Models/{name}/{name}.h5')
 
     pred_score = model.predict(image)  # type: ignore
     pred = pred_score.argmax()
