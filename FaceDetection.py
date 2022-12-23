@@ -21,10 +21,10 @@ emotion_label = {
     5: 'Surprise',
     6: 'Neutral'
 }
-loc = 'H:/My Drive/Study/DS/Computer Vision/Face Emotion Detection/'
+base_loc = 'H:/My Drive/Study/DS/Computer Vision/Face Emotion Detection/'
 
 def ret_latest_file(x):
-    ans = os.listdir(f'{loc}Models/')
+    ans = os.listdir(f'{base_loc}Models/')
     # print(ans)
     finlist = []
     re_pat = re.compile("([a-zA-Z]+_)([0-9]+)")
@@ -42,10 +42,10 @@ def ret_latest_file(x):
         return 0
 
 def get_prediction(image):
-    name = f'{loc}Models/{default}{ret_latest_file(default)}.json'
+    name = f'{base_loc}Models/{default}{ret_latest_file(default)}/{default}{ret_latest_file(default)}.json'
     # print(name)
     image = np.expand_dims(image, axis = 0)
-    print(image.shape)
+    # print(image.shape)
     model = model_from_json(open(name, "r").read())
     model.load_weights(f'{name[:-5]}.h5')
 
