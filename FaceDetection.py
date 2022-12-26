@@ -47,7 +47,7 @@ def get_prediction(image):
     # print(image.shape)
     
     model = model_from_json(open(f'{base_loc}Models/{name}/{name}.json', "r").read())
-    model.load_weights(f'{base_loc}Models/{name}/{name}.h5')
+    model.load_weights(f'{base_loc}Models/{name}/{name}.h5') # type: ignore
 
     pred_score = model.predict(image)  # type: ignore
     pred = pred_score.argmax()
