@@ -1,12 +1,10 @@
 import os
 import re
 
-import cv2 as cvv
+import cv2
 import keras
 from keras.utils import img_to_array
 import numpy as np
-# import mediapipe as mp
-from cv2 import cv2
 import matplotlib.pyplot as plt
 from keras.models import model_from_json
 
@@ -21,10 +19,10 @@ emotion_label = {
     5: 'Surprise',
     6: 'Neutral'
 }
-base_loc = 'H:/My Drive/Study/DS/Computer Vision/Face Emotion Detection/'
+base_loc = 'I:/My Drive/Study/DS/Computer Vision/Face Emotion Detection/'
 
 def ret_latest_file(x):
-    ans = os.listdir(f'{base_loc}Models/')
+    ans = os.listdir(f'{base_loc}/Models/')
     # print(ans)
     finlist = []
     re_pat = re.compile("([a-zA-Z]+_)([0-9]+)")
@@ -55,7 +53,7 @@ def get_prediction(image):
     return emotion_label[pred]
 
 face_cascade = cv2.CascadeClassifier(
-    cvv.data.haarcascades + 'haarcascade_frontalface_default.xml')
+    cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 cap = cv2.VideoCapture(0)
 
